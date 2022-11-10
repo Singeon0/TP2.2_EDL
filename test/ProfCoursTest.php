@@ -180,13 +180,18 @@ class ProfCoursTest extends TestCase
         foreach (self::$cours_a as $cours) {
             $cours->add($conn);
         }
-        
+
+
         /**
         *
         * Question 8 : Dans la fonction « testAdd() », s’inspirer de test d’ajout des profs pour tester l’ajout des cours.   
         *
         */
-        
+        $expected = count(self::$prof_a);
+        $num_records = Prof::count($conn);
+        $this->assertEquals($expected, $num_records, "Enregistrement des cours ...\n");
+        $this->assertCount($num_records, self::$prof_a, "Enregistrement des cours ...\n");
+
     }
     
     
